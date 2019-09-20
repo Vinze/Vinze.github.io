@@ -35,27 +35,38 @@ $('.navigation-toggle').on('click', function() {
     $('body').toggleClass('navigation-open');
 });
 
+$('[data-tooltip]').each(function() {
+    if ($(this).data('tooltip').length > 0) {
+        $(this).tooltipster({
+            maxWidth: 640,
+            theme: 'tooltipster-light',
+            side: 'bottom',
+            delay: 100,
+            animationDuration: 200,
+            updateAnimation: null,
+            contentAsHTML: true,
+            interactive: true,
+            content: 'Laden..',
+            functionBefore: function(instance, helper) {
+                var $origin = $(helper.origin);
+                var url = $origin.data('tooltip');
+
+                if ($origin.data('loaded') !== true) {
+                    $.get(url, function(content) {
+                        instance.content(content);
+                        $origin.data('loaded', true);
+                    });
+                }
+            }
+        });
+    } else {
+        $(this).removeAttr('data-tooltip');
+    }
+});
+
 var name = 'vincent';
 var host = 'webstr';
 var ext = 'nl';
 
 $('#mail').text(name + '@' + host + '.' + ext);
 $('#tel').text('06 504 909 16');
-
-// $('[data-tooltip]').each(function() {
-//     if ($(this).data('tooltip').length > 0) {
-//         $(this).tooltipster({
-//             maxWidth: 400,
-//             theme: 'tooltipster-light',
-//             side: 'bottom',
-//             delay: 100,
-//             animationDuration: 200,
-//             functionInit: function(instance, helper) {
-//                 var content = $(helper.origin).data('tooltip');
-//                 instance.content(content);
-//             }
-//         });
-//     } else {
-//         $(this).removeAttr('data-tooltip');
-//     }
-// });

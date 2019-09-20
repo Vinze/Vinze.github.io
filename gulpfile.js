@@ -19,6 +19,8 @@ gulp.task('build-css', function() {
 gulp.task('build-js', function() {
     return gulp.src([
             'src/js/jquery.min.js',
+            'src/js/lightbox.min.js',
+            'src/js/tooltipster.bundle.min.js',
             'src/js/app.js'
         ])
         .pipe(concat('app.js'))
