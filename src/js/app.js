@@ -35,6 +35,13 @@ $('.navigation-toggle').on('click', function() {
     $('body').toggleClass('navigation-open');
 });
 
+var name = 'vincent';
+var host = 'webstr';
+var ext = 'nl';
+
+$('#mail').text(name + '@' + host + '.' + ext);
+$('#tel').text('06 504 909 16');
+
 // $('[data-tooltip]').each(function() {
 //     if ($(this).data('tooltip').length > 0) {
 //         $(this).tooltipster({

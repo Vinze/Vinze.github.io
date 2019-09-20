@@ -6,20 +6,6 @@
 // Base CSS ------------------------------------
 // ---------------------------------------------
 
-@font-face {
-    font-family: 'Roboto';
-    src: url('../fonts/Roboto-Regular-webfont.woff') format('woff');
-    font-weight: @fw-normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Roboto';
-    src: url('../fonts/Roboto-Medium-webfont.woff') format('woff');
-    font-weight: @fw-bold;
-    font-style: normal;
-}
-
 html {
     box-sizing: border-box;
 }
@@ -63,12 +49,13 @@ pre {
 
 h1 {
     margin-bottom: 15px;
-    font-size: 4em;
+    font-size: 2.5em;
+    font-weight: @fw-bold;
 }
 
 h2 {
     margin-bottom: 15px;
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: @fw-normal;
     &:before {
         display: inline-block;
@@ -96,8 +83,12 @@ ul {
     list-style-type: disc;
 }
 
-strong, th, .bold {
+strong, .bold {
     font-weight: @fw-bold;
+}
+
+em, .italic {
+    font-style: italic;
 }
 
 small, .small {
@@ -108,7 +99,33 @@ img {
     max-width: 100%;
 }
 
+table {
+
+    th, td {
+        text-align: left;
+        padding: 5px 15px;
+        border-bottom: 1px solid #e5e5e5;
+        border-right: 1px solid #e5e5e5;
+        &:first-child {
+            padding-left: 0;
+        }
+        &:last-child {
+            border-right: none;
+            padding-right: 0;
+        }
+    }
+
+    tr:last-child th,
+    tr:last-child td {
+        border-bottom: none;
+    }
+
+    th { font-weight: @fw-normal; }
+}
+
+
 .sidebar {
+    display: none;
     position: fixed;
     height: 100%;
     width: 25%;
@@ -127,11 +144,10 @@ img {
 }
 
 .main {
-    margin-left: 25%;
 }
 
 .main-content {
-    padding: 0 30px;
+    padding: 0 10px;
     max-width: 960px;
 }
 
@@ -161,7 +177,6 @@ ul.navigation {
         color: #fff;
         text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         top: 30%;
-        font-weight: @fw-bold;
         text-align: center;
     }
     .subtitle {
@@ -170,10 +185,11 @@ ul.navigation {
 }
 
 .section {
-    margin-bottom: 50px;
-    padding-top: 50px;
-    padding-bottom: 100px;
+    margin-bottom: 25px;
+    padding-top: 25px;
+    padding-bottom: 50px;
     border-bottom: 1px solid #f2f2f2;
+    &:last-child { border-bottom: none; }
 }
 
 .timeline {
@@ -224,4 +240,30 @@ ul.navigation {
 .portfolio-item {
     height: 200px;
     background-color: #e5e5e5;
+}
+
+@media screen and (min-width: 640px) {
+    .sidebar {
+        display: block;
+    }
+    .main {
+        margin-left: 25%;
+    }
+    .main-content {
+        padding: 0 30px;
+    }
+    .banner {
+        padding: 0 30px;
+    }
+    .section {
+        margin-bottom: 50px;
+        padding-top: 50px;
+        padding-bottom: 100px;
+    }
+    h1 {
+        font-size: 4em;
+    }
+    h2 {
+        font-size: 2em;
+    }
 }
